@@ -3,10 +3,11 @@ import axios from "axios";
 import BlogCard from "../components/BlogCard";
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
   //get blogs
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get("/api/v1/blog/all-blog");
+      const { data } = await axios.get(`${backendUrl}/api/v1/blog/all-blog`);
       if (data?.success) {
         setBlogs(data?.blogs);
       }
